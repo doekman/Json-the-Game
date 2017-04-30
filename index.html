@@ -1,0 +1,106 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>JSON, the game</title>
+    <style>
+        h1, #field {
+            font:24px/125% Menlo, Consolas, monospace; /*use 2vh as font-size?*/
+        }
+        #dashboard {
+            text-align:center;
+            margin: 2em 0 1em 0;
+        }
+        #field {
+            background:#444;
+            color:white;
+            padding:0.5em;
+            border:1px solid gray;
+        }
+        #content { /*needed because of box-model, padding & width */
+            position:relative;
+        }
+        #stacks {
+            width:32ch;
+            overflow-x:show;
+            background:black;
+        }
+        #stacks > div {
+            white-space: nowrap;
+        }
+        #stacks .indent {
+            padding-left:2ch;
+        }
+        #stacks code {
+            font:inherit;
+        }
+        #block {
+            position:absolute;
+            font:inherit;
+            color:white;
+            outline:1px dashed white;
+        }
+        /* State of JSON tokens */
+        .incomplete {
+            color:gray;
+            text-decoration:underline;;
+        }
+        .unbalanced {
+            color:gray;
+            font-style:italic;
+        }
+        .complete {
+        }
+        .error {
+            color: red;
+            text-shadow: 1px 1px 0 white;
+        }
+        .missing {
+            outline:1px dashed orange;
+        }
+    </style>
+</head>
+<body>
+    <h1 id="dashboard">{name:'JSON, the game', level:0<!--, points:1250, lifes:3, stats:{unbalanced:1, missing:2, incomplete:1, errors:1}-->}</h1>
+    <div id="field">
+        <div id="content">
+            <div id="stacks">
+                <div>&nbsp;</div>
+                <div>
+                    <code class="unbalanced">{</code>
+                </div>
+                <div class="indent">
+                    <div>
+                        <code class="complete">"name"</code><code class="complete">:</code><code class="complete">"Yes"</code><code class="missing">&nbsp;</code>
+                    </div>
+                    <div>
+                        <code class="complete">"age"</code><code class="complete">:</code><code class="error">42b</code><code class="complete">,</code>
+                    </div>
+                    <div>
+                        <code class="complete">"complete"</code><code class="complete">:</code><code class="incomplete">tr</code>
+                    </div>
+                    <div>
+                        <code class="complete">"primes"</code><code class="complete">:</code>
+                    </div>
+                    <div>
+                        <code class="complete">[</code><code class="complete">7</code><code class="missing">&nbsp;</code>
+                    </div>
+                    <div class="indent">
+                        <div>
+                            <code class="complete">131</code>
+                        </div>
+                    </div>
+                    <div>
+                        <code class="complete">]</code>
+                    </div>
+                </div>
+                <div>&nbsp;</div>
+            </div>
+            <div class="ruler" style="background:#bbb; display:none">
+                <code>0123456789_123456789_123456789_123456789_123456789_123456789</code>
+            </div>
+            <code id="block" style="top:calc(4em * 1.25); /*line-height*/; left:32ch">ue</code>
+        </div>
+    </div>
+</body>
+</html>
